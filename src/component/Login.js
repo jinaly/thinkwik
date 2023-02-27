@@ -10,7 +10,6 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const userData = useSelector((state) => state.user.users);
-  console.log(userData, "userdata");
   const validateMessages = {
     required: "${label} is required!",
     types: {
@@ -63,7 +62,6 @@ const Login = () => {
             <Form.Item
               label="Email"
               name="email"
-              //   value={fieldData.email}
               style={{ width: "100%" }}
               rules={[
                 {
@@ -76,7 +74,6 @@ const Login = () => {
             <Form.Item
               label="Password"
               name="password"
-              //   value={fieldData.password}
               style={{ width: "100%" }}
               rules={[
                 {

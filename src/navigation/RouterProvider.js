@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,13 +9,15 @@ import {
 import routes from "./routes";
 
 const RouterProvider = () => {
+  const loggedIn = useSelector((state) => state?.user?.loginUser);
 
   return (
     <div>
       <Router>
         <Routes>
-          <>
-            {routes.map((route) => {
+          {routes
+            .filter((r) => loggedIn || !r.isLoggedInRequired)
+            .map((route) => {
               return (
                 <Route
                   key={route.path}
@@ -23,10 +26,7 @@ const RouterProvider = () => {
                 />
               );
             })}
-          </>
-          {/* <>
-            <Route path="/*" element={<Navigate to="/" />} />
-          </> */}
+          <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
     </div>

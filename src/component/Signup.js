@@ -6,7 +6,6 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
   const userData = useSelector((state) => state.user.users);
-  //   console.log(userData, "userData");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const Signup = () => {
         (user) => user.email === values.email
       );
       if (existingUsers) {
-        return alert("user alredy exist");
+        return alert("User already exist");
       } else {
         dispatch(
           signupAction({
@@ -104,7 +103,7 @@ const Signup = () => {
             </Form.Item>
             <Form.Item>
               <span>
-                Alredy a user <Link to="/">LOGIN</Link>
+                Already a user <Link to="/">LOGIN</Link>
               </span>
             </Form.Item>
             <Form.Item>
